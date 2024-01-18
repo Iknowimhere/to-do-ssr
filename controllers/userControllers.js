@@ -1,5 +1,4 @@
 import User from '../models/User.js'
-import jwt from 'jsonwebtoken'
 import { genToken } from '../utils/genToken.js'
 
 // @desc    Register the User
@@ -72,4 +71,12 @@ export const loginUser=async(req,res)=>{
 
 export const getRegisterForm=(req,res)=>{
     res.render("register")
+}
+
+// @desc    Get Login Form
+// @path    /api/v1/users/login
+// @access  Public
+
+export const getLoginForm=(req,res)=>{
+    res.render("login")
 }

@@ -14,6 +14,9 @@ app.set("view engine","ejs")
 //to process incoming json data
 app.use(express.json())
 
+//to process form data
+app.use(express.urlencoded({extended:false}))
+
 //to serve static resources
 app.use(express.static("public"))
 
