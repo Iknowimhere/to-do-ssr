@@ -21,12 +21,11 @@ export const registerUser=async (req,res)=>{
         confirmPassword:req.body.confirmPassword
     })
     let token=await genToken(newUser._id);
-    res.status(201).json({
-        status:"success",
-        messsage:"user registered successfuly",
-        token,
-        newUser
-    }) 
+    res.cookie("jwt",token,{
+        maxAge:24*60*60*1000,
+        httpOnly:true
+    })
+    res.redirect("/api/v1/tasks") 
     } catch (error) {
         res.status(400).json({
             status:"fail",
@@ -51,12 +50,11 @@ export const loginUser=async(req,res)=>{
          })
      }
      let token=await genToken(existingUser._id);
-     res.status(201).json({
-         status:"success",
-         messsage:"user logged in successfuly",
-         token,
-         existingUser
-     })
+     res.cookie("jwt",token,{
+        maxAge:24*60*60*1000,
+        httpOnly:true
+    })
+    res.redirect("/api/v1/tasks")
    } catch (error) {
     res.status(400).json({
         status:"fail",

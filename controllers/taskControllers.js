@@ -30,11 +30,12 @@ export const postTask=async (req,res)=>{
 export const getTasks=async (req,res)=>{
     try {
         const tasks=await Task.find()
-    res.status(200).json({
-        status:"Success",
-        message:"tasks fetched successfully",
-        tasks
-    }) 
+        res.render("home",{tasks})
+    // res.status(200).json({
+    //     status:"Success",
+    //     message:"tasks fetched successfully",
+    //     tasks
+    // }) 
     } catch (error) {
         res.status(400).json({
             status:"fail",

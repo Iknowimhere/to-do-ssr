@@ -3,7 +3,8 @@ import User from '../models/User.js';
 
 export const auth=async (req,res,next)=>{
  try {
-    let token=req?.headers?.authorization?.split(" ")[1]
+    let token=req.cookies?.jwt
+    // let token=req?.headers?.authorization?.split(" ")[1]
     if(!token){
         return res.json({
             message:"no token available"
