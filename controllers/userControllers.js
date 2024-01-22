@@ -78,3 +78,12 @@ export const getRegisterForm=(req,res)=>{
 export const getLoginForm=(req,res)=>{
     res.render("login")
 }
+
+// @desc    logout user
+// @path    /api/v1/users/logout
+// @access  Private/user
+
+export const logout=(req,res)=>{
+    res.clearCookie("jwt")
+    res.redirect("/")
+}

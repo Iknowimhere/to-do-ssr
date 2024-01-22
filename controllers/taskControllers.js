@@ -6,14 +6,10 @@ import Task from "../models/Task.js"
 
 export const postTask=async (req,res)=>{
     try {
-        const newTask=await Task.create({
+        await Task.create({
             task:req.body.task
         })
-        res.status(201).json({
-            status:"Success",
-            message:"task created successfully",
-            newTask
-        })  
+        res.redirect("/api/v1/tasks")
     } catch (error) {
         res.status(400).json({
             status:"fail",
@@ -51,11 +47,7 @@ export const getTasks=async (req,res)=>{
 export const getTask=async (req,res)=>{
    try {
     const task=await Task.findById(req.params.id)
-    res.status(200).json({
-        status:"Success",
-        message:"task fetched successfully",
-        task
-    })
+    res.render("update",{task})
    } catch (error) {
     res.status(400).json({
         status:"fail",
