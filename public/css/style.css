@@ -44,6 +44,24 @@ body{
 .nav button{
     top: 20% !important;
 }
+.btn{
+    background-color: transparent;
+    border: none;
+}
+.btn i{
+    font-size: x-large;
+}
+.add{
+    color: green;
+}
+.edit{
+    color: blue;
+    font-size: x-large;
+}
+.delete{
+    color: red;
+    font-size: x-large;
+}
 .nav button a{
     border: 1px solid white;
     padding: 10px 18px;

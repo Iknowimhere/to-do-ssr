@@ -62,12 +62,13 @@ export const getTask=async (req,res)=>{
 
 export const updateTask=async (req,res)=>{
     try {
-        const task=await Task.findByIdAndUpdate(req.params.id,{task:req.body.task},{new:true})
-    res.status(200).json({
-        status:"Success",
-        message:"task updated successfully",
-        task
-    })  
+    await Task.findByIdAndUpdate(req.params.id,{task:req.body.task},{new:true})
+    // res.status(200).json({
+    //     status:"Success",
+    //     message:"task updated successfully",
+    //     task
+    // })  
+    res.redirect("/api/v1/tasks")
     } catch (error) {
         res.status(400).json({
             status:"fail",
@@ -83,10 +84,7 @@ export const updateTask=async (req,res)=>{
 export const deleteTask=async (req,res)=>{
   try {
     await Task.findByIdAndDelete(req.params.id)
-    res.status(204).json({
-        status:"Success",
-        message:"task deleted successfully",
-    })
+    res.redirect("/api/v1/tasks")
   } catch (error) {
     res.status(400).json({
         status:"fail",

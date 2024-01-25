@@ -3,6 +3,7 @@ dotenv.config()
 import express from 'express'
 import { dbConnection } from '../config/dbConfig.js';
 import taskRouter from '../routes/taskRoutes.js';
+import methodOverride from 'method-override'
 import cookieParser from 'cookie-parser';
 import userRouter from '../routes/userRoutes.js';
 //app instance
@@ -12,6 +13,8 @@ dbConnection()
 app.set("view engine","ejs")
 
 app.use(cookieParser('umashankar'))
+//to achieve put and delete
+app.use(methodOverride('_method'))
 
 //to process incoming json data
 app.use(express.json())
