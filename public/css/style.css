@@ -44,23 +44,25 @@ body{
 .nav button{
     top: 20% !important;
 }
-.btn{
-    background-color: transparent;
-    border: none;
-}
 .btn i{
     font-size: x-large;
 }
 .add{
     color: green;
+    background-color: transparent;
+    border: none;
 }
 .edit{
     color: blue;
     font-size: x-large;
+    background-color: transparent;
+    border: none;
 }
 .delete{
     color: red;
     font-size: x-large;
+    background-color: transparent;
+    border: none;
 }
 .nav button a{
     border: 1px solid white;
