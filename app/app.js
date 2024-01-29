@@ -5,6 +5,8 @@ import { dbConnection } from '../config/dbConfig.js';
 import taskRouter from '../routes/taskRoutes.js';
 import methodOverride from 'method-override'
 import cookieParser from 'cookie-parser';
+import session from 'express-session'
+import flash from 'connect-flash';
 import userRouter from '../routes/userRoutes.js';
 //app instance
 let app=express()
@@ -13,6 +15,14 @@ dbConnection()
 app.set("view engine","ejs")
 
 app.use(cookieParser('umashankar'))
+
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true,
+  }))
+
+app.use(flash())
 //to achieve put and delete
 app.use(methodOverride('_method'))
 

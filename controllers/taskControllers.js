@@ -9,6 +9,7 @@ export const postTask=async (req,res)=>{
         await Task.create({
             task:req.body.task
         })
+        req.flash("message","New Task Added")
         res.redirect("/api/v1/tasks")
     } catch (error) {
         res.status(400).json({
@@ -22,16 +23,11 @@ export const postTask=async (req,res)=>{
 //@path   /api/v1/tasks
 //@access Public
 
-
 export const getTasks=async (req,res)=>{
     try {
         const tasks=await Task.find()
-        res.render("home",{tasks})
-    // res.status(200).json({
-    //     status:"Success",
-    //     message:"tasks fetched successfully",
-    //     tasks
-    // }) 
+        const message=req.flash("message");
+        res.render("home",{tasks,message})
     } catch (error) {
         res.status(400).json({
             status:"fail",
