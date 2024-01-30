@@ -1,9 +1,9 @@
-const alert=document.querySelector(`.alert`);
+const alertDiv=document.querySelector(`.alert`);
 
-alert.style.position="absolute";
-alert.style.top="70px";
+alertDiv.style.position="absolute";
+alertDiv.style.top="70px";
 setTimeout(()=>{
-    if(alert!=null){
-        alert.style.display="none";
+    if(alertDiv!=null){
+        alertDiv.style.display="none";
     }
 },3000)

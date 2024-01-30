@@ -64,6 +64,7 @@ export const updateTask=async (req,res)=>{
     //     message:"task updated successfully",
     //     task
     // })  
+    req.flash("message","Task updated")
     res.redirect("/api/v1/tasks")
     } catch (error) {
         res.status(400).json({
@@ -80,6 +81,7 @@ export const updateTask=async (req,res)=>{
 export const deleteTask=async (req,res)=>{
   try {
     await Task.findByIdAndDelete(req.params.id)
+    req.flash("message","Task deleted")
     res.redirect("/api/v1/tasks")
   } catch (error) {
     res.status(400).json({
